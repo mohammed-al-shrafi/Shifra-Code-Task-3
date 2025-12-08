@@ -1,0 +1,250 @@
+@import '../global/variables';
+
+.welcome {
+  padding-bottom: 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet {
+      //   @include flex-column;
+    }
+    .left {
+      h1 {
+        font-size: 4.8rem;
+        line-height: 1.2;
+        color: $primary-dark;
+        @include tablet {
+          font-size: 3rem;
+        }
+        .shifra {
+          color: $text-light-yellow;
+        }
+      }
+      p {
+        line-height: 1.4;
+        font-size: 2rem;
+        color: $text-medium;
+        margin-top: 1.6rem;
+        @include tablet {
+          font-size: 1.6rem;
+        }
+      }
+      .btn-explore {
+        margin-top: 3rem;
+        font-size: 1.6rem;
+        background-color: $primary-dark;
+        color: $text-white;
+        border-radius: $radius-xl;
+        padding: 1.5rem 2.5rem;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+        @include tablet {
+          font-size: 1.2rem;
+          padding: 1rem 2rem;
+        }
+      }
+    }
+    .right {
+      img.explore {
+        width: 51rem;
+        height: 44rem;
+        @include mobile {
+          display: none;
+        }
+        @include tablet {
+          width: 30rem;
+          height: 25rem;
+        }
+      }
+    }
+  }
+}
+
+.offer {
+  .container {
+    .title--desc {
+      text-align: center;
+      font-size: 1.8rem;
+      color: $text-black;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.5rem;
+      gap: 2rem;
+
+      .card {
+        width: 25rem;
+        text-align: center;
+        padding: 1.8rem 1.4rem;
+        border-radius: $radius-md;
+        background-color: $bg-white;
+        box-shadow: 0px 2px 5px -1px $text-black;
+        .card--title {
+          color: $primary-dark;
+          font-weight: 700;
+          font-size: 1.8rem;
+        }
+        .card--info {
+          color: $text-medium;
+          font-size: 1.7em;
+          font-weight: 700;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Start Feature Section
+.feature {
+  .container {
+    .feature__cards {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.5rem;
+      gap: 2rem;
+      @include mobile {
+        flex-direction: column;
+      }
+      .feature__card {
+        width: 23%;
+        @include tablet {
+          width: 45%;
+        }
+
+        @include mobile {
+          width: 100%;
+        }
+
+        &--img {
+          height: fit-content;
+          max-height: 100%;
+        }
+        &--info {
+          position: relative;
+          box-shadow: 0px 2px 5px -1px $text-black;
+          top: -1rem;
+          padding: 1.5rem 1.7rem;
+          border-radius: 0.8rem 0.8rem $radius-md $radius-md;
+          background: $bg-white;
+          @include flex-column;
+          gap: 1.5rem;
+
+          .card--title {
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: $primary-dark;
+          }
+          .card--desc {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: $text-medium;
+          }
+          .card--btn {
+            background-color: $primary-dark;
+            color: $text-white;
+            padding: 1rem 1.4rem;
+            border-radius: $radius-xl;
+            margin-left: auto;
+            font-weight: 400;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+// End Feature Section
+
+// Start benifits Section
+.benifits {
+  .container {
+    .benifits__cards {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(3, auto);
+      gap: 3rem;
+      margin-top: 3rem;
+      @include mobile {
+        grid-template-columns: repeat(1, auto);
+      }
+      .benifit__card {
+        &--img {
+          padding: 0.4rem;
+          background-color: #d9d9d9;
+          width: 14.5rem;
+          height: 10rem;
+          margin: 0 auto;
+          display: block;
+          margin-bottom: 2rem;
+          object-fit: cover;
+        }
+        p {
+          background-color: $text-light-yellow;
+          color: $text-white;
+          padding: 1rem 2.5rem;
+          text-align: center;
+          font-size: 1.8rem;
+          border-radius: $radius-lg;
+          max-width: fit-content;
+          margin: 0 auto;
+          @include tablet {
+            padding: 1rem 2rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+// End benifits Section
+
+// Start students section
+.students {
+  .students__cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .students__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      .student-img {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: $radius-circle;
+      }
+      .student-say {
+        font-size: 1.8rem;
+        color: $text-medium;
+        text-align: center;
+        @include mobile {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+// End students section
