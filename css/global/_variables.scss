@@ -14,6 +14,11 @@ $btn-primary: linear-gradient(135deg, #06d 0%, #0052cc 100%);
 $btn-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 $btn-hover: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
 
+$offer-card-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$offer-card-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$offer-card-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+$offer-card-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
 /* ===================================
    VARIABLES - Transitions
    =================================== */
@@ -91,4 +96,104 @@ $radius-circle: 50%;
 @mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+/* ===================================
+   KEYFRAME ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromUp {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromDown {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

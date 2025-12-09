@@ -17,7 +17,6 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
   line-height: 1.6;
   overflow-x: hidden;
   animation: fadeIn 0.5s ease-out;
@@ -108,7 +107,7 @@ header.head {
 
         a {
           color: $text-white;
-          font-size: 1.6rem;
+          font-size: 1.8rem;
           padding: 0.6rem 1.2rem;
           border-radius: $radius-sm;
           transition: $transition-smooth;
@@ -287,6 +286,7 @@ header.head {
   letter-spacing: 1.1px;
   text-align: center;
   font-weight: 500;
+  animation: slideInFromRight 0.8s ease-out;
 
   @include tablet {
     font-size: 3.8rem;
@@ -298,9 +298,13 @@ header.head {
 
 footer.footer {
   background-color: $primary-dark;
-  padding: 4rem 0 2rem;
+  padding: 6rem 0 4rem;
   text-align: center;
-
+  .container {
+    > * {
+      animation: slideInFromDown 0.8s ease-out;
+    }
+  }
   h2 {
     font-size: 4.8rem;
     font-weight: 500;

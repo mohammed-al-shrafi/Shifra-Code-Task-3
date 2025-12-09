@@ -13,6 +13,97 @@
 /* ===================================
    MIXINS - Flexbox
    =================================== */
+/* ===================================
+   KEYFRAME ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromUp {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromDown {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOutIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -133,7 +224,7 @@ header.head {
 }
 .nav-bar .left .nav-bar__links li a {
   color: #ffffff;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding: 0.6rem 1.2rem;
   border-radius: 0.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -290,6 +381,7 @@ header.head {
   letter-spacing: 1.1px;
   text-align: center;
   font-weight: 500;
+  animation: slideInFromRight 0.8s ease-out;
 }
 @media (max-width: 768px) {
   .global--title {
@@ -304,8 +396,11 @@ header.head {
 
 footer.footer {
   background-color: #001b4a;
-  padding: 4rem 0 2rem;
+  padding: 6rem 0 4rem;
   text-align: center;
+}
+footer.footer .container > * {
+  animation: slideInFromDown 0.8s ease-out;
 }
 footer.footer h2 {
   font-size: 4.8rem;
