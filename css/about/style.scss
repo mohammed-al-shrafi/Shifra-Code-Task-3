@@ -1,0 +1,397 @@
+@import '../global/variables';
+
+header.head {
+  height: 100vh;
+  background-image: url('../../assets/imgs/courses/background-course.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  border-radius: 0 0 $radius-xl $radius-xl;
+
+  @include mobile {
+    background-image: none;
+    height: fit-content;
+    border-radius: 0;
+    &::after {
+      background-color: transparent !important;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    border-radius: 0 0 $radius-xl $radius-xl;
+    height: 10rem;
+    background-color: $bg-white;
+  }
+
+  .nav-bar {
+    @include flex-between;
+    @include mobile {
+      justify-content: space-around;
+    }
+
+    .left {
+      @include flex-center;
+      gap: 2rem;
+
+      .logo img {
+        width: 6rem;
+
+        @include mobile {
+          width: 5rem;
+        }
+      }
+
+      .nav-bar__links {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+
+        li a {
+          color: #777676;
+          font-weight: bold;
+          font-size: 1.8rem;
+          padding: 0.6rem 1.2rem;
+          border-radius: $radius-sm;
+          transition: $transition-smooth;
+
+          @include mobile {
+            color: $text-white;
+          }
+          &:hover {
+            color: $primary-dark;
+          }
+
+          &.active {
+            color: $primary-dark;
+            animation: glow 2s infinite;
+          }
+        }
+      }
+    }
+
+    .right {
+      @include flex-center;
+      gap: 1rem;
+
+      .notification-icon {
+        position: relative;
+        cursor: pointer;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radius-circle;
+        background: rgba(119, 118, 118, 0.1);
+        transition: $transition-smooth;
+
+        &:hover {
+          background: rgba(119, 118, 118, 0.2);
+        }
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+          color: $text-light;
+        }
+
+        .notification-badge {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          background: #ff0000;
+          color: white;
+          border-radius: $radius-circle;
+          width: 1.6rem;
+          height: 1.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        @include mobile {
+          width: 3.5rem;
+          height: 3.5rem;
+
+          svg {
+            width: 1.8rem;
+            height: 1.8rem;
+          }
+        }
+      }
+
+      span.name {
+        @include flex-center;
+        width: 5rem;
+        aspect-ratio: 1/1;
+        font-size: 1.8rem;
+        color: $text-white;
+        background-color: $text-light-yellow;
+        border-radius: $radius-circle;
+
+        @include mobile {
+          width: 4rem;
+          font-size: 1.6rem;
+        }
+      }
+
+      img.user-img {
+        display: none;
+        width: 5rem;
+        height: 5rem;
+        border-radius: $radius-circle;
+        object-fit: cover;
+
+        @include mobile {
+          display: block;
+        }
+      }
+    }
+
+    .hamburger {
+      display: none;
+      width: 3.2rem;
+      height: 2.4rem;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: $text-light;
+        border-radius: 3px;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:nth-child(3) {
+          bottom: 0;
+        }
+      }
+
+      &.active {
+        span:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        span:nth-child(3) {
+          bottom: 50%;
+          transform: translateY(50%) rotate(-45deg);
+        }
+      }
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    @include tablet {
+      .nav-bar__links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: $primary-dark;
+        padding: 2rem 0;
+        gap: 2rem;
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+
+        li a {
+          color: $text-white;
+          font-size: 2rem;
+        }
+
+        &.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}
+
+// Start Section About
+section.about {
+  background-color: $bg-light;
+  .container {
+    > p {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: $text-black;
+      text-transform: capitalize;
+      margin-top: 3rem;
+      letter-spacing: 0.05rem;
+      line-height: 2;
+      @include mobile {
+        font-size: 1.4rem;
+      }
+    }
+
+    .cards {
+      @include flex-between;
+      gap: 2rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      .card {
+        border-radius: $radius-md;
+        box-shadow: $shadow-card;
+        background-color: $bg-white;
+        padding: 1.8rem 1.2rem;
+        width: 45%;
+        @include tablet {
+          width: 48%;
+        }
+        @include mobile {
+          width: 100%;
+        }
+        .card__title {
+          font-size: 4rem;
+          color: $primary-dark;
+          border-radius: $radius-lg;
+          text-align: center;
+          font-weight: 600;
+          @include tablet {
+            font-size: 3rem;
+          }
+          @include mobile {
+            font-size: 2rem;
+          }
+        }
+        .card__desc {
+          font-size: 1.8rem;
+          text-align: center;
+          margin-top: 1rem;
+          font-weight: 500;
+
+          @include mobile {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+// End Section About
+
+// Start Section Team
+.team {
+  background-color: $bg-light;
+  .teams {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 7rem;
+
+    .instructor {
+      background-color: $bg-white;
+      width: 23%;
+      padding: 1rem 1.2rem 1.4rem;
+      border-radius: $radius-md;
+      position: relative;
+      @include tablet {
+        width: 48%;
+        margin-top: 2rem;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
+      .instructor__photo {
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        width: 7.9rem;
+        height: 8.9rem;
+        object-fit: cover;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+
+        @include tablet {
+          width: 5rem;
+          height: 6rem;
+          top: 0;
+        }
+      }
+      .instructor__name {
+        font-size: 2.4rem;
+        color: $primary-dark;
+        text-align: center;
+        text-transform: capitalize;
+        margin-top: 2.2rem;
+      }
+      .instructor__desc {
+        text-transform: capitalize;
+        margin-top: 1.7rem;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: $text-black;
+        text-align: center;
+      }
+    }
+  }
+  .statics {
+    @include flex-center;
+    gap: 1rem;
+    margin-top: 5rem;
+    flex-wrap: wrap;
+
+    .static {
+      width: 20%;
+      background-color: $bg-white;
+      border-radius: $radius-md;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+
+      @include tablet {
+        width: 48%;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
+
+      h4 {
+        font-size: 2.4rem;
+        font-weight: 300;
+        color: $text-black;
+        text-transform: capitalize;
+      }
+      span {
+        font-weight: 600;
+        font-size: 2.4rem;
+        color: $primary-dark;
+      }
+    }
+  }
+}
+// End Section Team

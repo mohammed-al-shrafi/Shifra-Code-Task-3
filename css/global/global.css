@@ -174,9 +174,9 @@ a {
   outline-offset: 2px;
 }
 
-/* ===================================
-   Header Styles
-   =================================== */
+/* ============================
+   HEADER
+=============================== */
 header.head {
   color: #515151;
   padding: 1.2rem 0;
@@ -184,7 +184,11 @@ header.head {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   animation: slideDown 0.5s ease-out;
-  background: #c8d3d7;
+  background-color: #c8d3d7;
+  z-index: 1000;
+}
+header.head .container {
+  width: 100%;
 }
 
 .nav-bar {
@@ -192,13 +196,27 @@ header.head {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  /* Hamburger Menu */
+  /* ============================
+     LEFT SECTION
+  =============================== */
+  /* ============================
+     RIGHT SECTION (USER ICON)
+  =============================== */
+  /* ============================
+     HAMBURGER
+  =============================== */
+  /* ============================
+     MOBILE VERSION
+  =============================== */
 }
 .nav-bar .left {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  /* ============================
+     MAIN NAV LINKS
+  =============================== */
 }
 .nav-bar .left div.logo {
   background-color: #001b4a;
@@ -228,7 +246,6 @@ header.head {
   padding: 0.6rem 1.2rem;
   border-radius: 0.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
   font-weight: bold;
 }
 .nav-bar .left .nav-bar__links li a:hover {
@@ -248,12 +265,19 @@ header.head {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.6rem;
-  width: 4rem;
+  font-size: 1.8rem;
+  width: 5rem;
   aspect-ratio: 1/1;
   color: #ffffff;
   background-color: #e1af00;
   border-radius: 50%;
+  display: flex;
+}
+@media (max-width: 576px) {
+  .nav-bar .right span.name {
+    width: 4rem;
+    font-size: 1.6rem;
+  }
 }
 .nav-bar .hamburger {
   display: none;
@@ -261,14 +285,10 @@ header.head {
   height: 2.4rem;
   position: relative;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
   background-color: transparent;
   border: none;
   padding: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.nav-bar .hamburger:hover {
-  transform: scale(1.1);
 }
 .nav-bar .hamburger span {
   display: block;
@@ -278,7 +298,7 @@ header.head {
   border-radius: 3px;
   position: absolute;
   left: 0;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.3s ease;
 }
 .nav-bar .hamburger span:nth-child(1) {
   top: 0;
@@ -296,11 +316,44 @@ header.head {
 }
 .nav-bar .hamburger.active span:nth-child(2) {
   opacity: 0;
-  transform: translateY(-50%) scaleX(0);
+  transform: scaleX(0);
 }
 .nav-bar .hamburger.active span:nth-child(3) {
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
+}
+@media (max-width: 768px) {
+  .nav-bar {
+    justify-content: space-around;
+    /* Show menu when open */
+  }
+  .nav-bar .hamburger {
+    display: block;
+  }
+  .nav-bar .nav-bar__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #001b4a;
+    padding: 2rem 0;
+    gap: 2rem;
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 999;
+  }
+  .nav-bar .nav-bar__links li a {
+    color: #ffffff;
+    font-size: 2rem;
+  }
+  .nav-bar .nav-bar__links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* Responsive Navigation */
@@ -364,6 +417,7 @@ header.head {
 }
 .section {
   padding: 5rem 0;
+  background-color: #c8d3d7;
 }
 @media (max-width: 576px) {
   .section {
@@ -398,9 +452,10 @@ footer.footer {
   background-color: #001b4a;
   padding: 6rem 0 4rem;
   text-align: center;
+  border-radius: 2rem 2rem 0 0;
 }
 footer.footer .container > * {
-  animation: slideInFromDown 0.8s ease-out;
+  animation: slideInFromDown 0.8s ease-out forwards;
 }
 footer.footer h2 {
   font-size: 4.8rem;
@@ -409,7 +464,7 @@ footer.footer h2 {
 }
 @media (max-width: 768px) {
   footer.footer h2 {
-    font-size: 3.8rem;
+    font-size: 3rem;
   }
 }
 @media (max-width: 576px) {
@@ -427,15 +482,40 @@ footer.footer .btn-register {
 }
 footer.footer ul {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  gap: 2rem;
   margin: 2rem 0;
+}
+footer.footer ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: 0.3s;
+}
+@media (max-width: 576px) {
+  footer.footer ul li a {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+footer.footer ul li a svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: currentColor;
+}
+footer.footer ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
 }
 footer.footer .bottom {
   font-weight: 500;
   font-size: 1.8rem;
   color: #ffffff;
-  margin: 0 auto;
 }
 @media (max-width: 768px) {
   footer.footer .bottom {
@@ -444,4 +524,12 @@ footer.footer .bottom {
 }
 footer.footer .copy {
   margin-top: 1.5rem;
+  color: #ffffff;
+  opacity: 0.8;
+}
+@media (max-width: 576px) {
+  footer.footer .copy {
+    font-size: 1.4rem;
+    line-height: 2;
+  }
 }/*# sourceMappingURL=global.css.map */

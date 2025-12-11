@@ -260,10 +260,14 @@
   color: #001b4a;
   font-weight: 700;
   font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 .offer .container .cards .card .card--info {
   color: #4f4f4f;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: 700;
   margin-top: 1rem;
 }
@@ -315,6 +319,9 @@
   height: -moz-fit-content;
   height: fit-content;
   max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 16/9;
 }
 .feature .container .feature__cards .feature__card--info {
   position: relative;

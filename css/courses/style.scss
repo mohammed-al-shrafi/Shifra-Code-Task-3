@@ -1,0 +1,491 @@
+@import '../global/variables';
+
+header.head {
+  height: 100vh;
+  background-image: url('../../assets/imgs/courses/background-course.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  border-radius: 0 0 $radius-xl $radius-xl;
+
+  @include mobile {
+    background-image: none;
+    height: fit-content;
+    border-radius: 0;
+    &::after {
+      background-color: transparent !important;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    border-radius: 0 0 $radius-xl $radius-xl;
+    height: 11rem;
+    background-color: $bg-white;
+  }
+
+  .nav-bar {
+    @include flex-between;
+    @include mobile {
+      justify-content: space-around;
+    }
+
+    .left {
+      @include flex-center;
+      gap: 2rem;
+
+      .logo img {
+        width: 6rem;
+
+        @include mobile {
+          width: 5rem;
+        }
+      }
+
+      .nav-bar__links {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+
+        li a {
+          color: #777676;
+          font-weight: bold;
+          font-size: 1.8rem;
+          padding: 0.6rem 1.2rem;
+          border-radius: $radius-sm;
+          transition: $transition-smooth;
+          @include mobile {
+            color: $text-white;
+          }
+          &:hover {
+            color: $primary-dark;
+          }
+
+          &.active {
+            color: $primary-dark;
+            animation: glow 2s infinite;
+          }
+        }
+      }
+    }
+
+    .right {
+      @include flex-center;
+      gap: 1rem;
+
+      .notification-icon {
+        position: relative;
+        cursor: pointer;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radius-circle;
+        background: rgba(119, 118, 118, 0.1);
+        transition: $transition-smooth;
+
+        &:hover {
+          background: rgba(119, 118, 118, 0.2);
+        }
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+          color: $text-light;
+        }
+
+        .notification-badge {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          background: #ff0000;
+          color: white;
+          border-radius: $radius-circle;
+          width: 1.6rem;
+          height: 1.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        @include mobile {
+          width: 3.5rem;
+          height: 3.5rem;
+
+          svg {
+            width: 1.8rem;
+            height: 1.8rem;
+          }
+        }
+      }
+
+      span.name {
+        @include flex-center;
+        width: 5rem;
+        aspect-ratio: 1/1;
+        font-size: 1.8rem;
+        color: $text-white;
+        background-color: $text-light-yellow;
+        border-radius: $radius-circle;
+
+        @include mobile {
+          width: 4rem;
+          font-size: 1.6rem;
+        }
+      }
+
+      img.user-img {
+        display: none;
+        width: 5rem;
+        height: 5rem;
+        border-radius: $radius-circle;
+        object-fit: cover;
+
+        @include mobile {
+          display: block;
+        }
+      }
+    }
+
+    .hamburger {
+      display: none;
+      width: 3.2rem;
+      height: 2.4rem;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: $text-light;
+        border-radius: 3px;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:nth-child(3) {
+          bottom: 0;
+        }
+      }
+
+      &.active {
+        span:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        span:nth-child(3) {
+          bottom: 50%;
+          transform: translateY(50%) rotate(-45deg);
+        }
+      }
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    /* Mobile Menu */
+    @include tablet {
+      .nav-bar__links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: $primary-dark;
+        padding: 2rem 0;
+        gap: 2rem;
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+
+        li a {
+          color: $text-white;
+          font-size: 2rem;
+        }
+
+        &.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}
+
+/* =========================
+     Intro Section
+  ========================== */
+.intro {
+  .intro__title {
+    font-size: 4.8rem;
+    font-weight: 500;
+    color: $primary-dark;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 5rem;
+      height: 5rem;
+      border-radius: $radius-circle;
+      background-color: #3f44e3;
+      right: 0;
+      bottom: -10%;
+    }
+
+    @include tablet {
+      font-size: 3rem;
+    }
+    @include mobile {
+      font-size: 2rem;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .btn__search {
+    margin: 4rem auto 0;
+    background-color: $primary-dark;
+    padding: 2rem 4rem;
+    color: $bg-white;
+    border-radius: $radius-xl;
+    font-size: 1.6rem;
+    @include flex-center;
+    gap: 1.8rem;
+
+    @include mobile {
+      padding: 1.5rem 2rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+.filter-section {
+  padding: 3rem 0;
+  background-color: $bg-light;
+  .container {
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+
+      @include mobile {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .filter-btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.6rem;
+        font-weight: 500;
+        border: 2px solid #ddd;
+        background-color: #fff;
+        color: $text-black;
+        border-radius: $radius-md;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: capitalize;
+        position: relative;
+
+        @include mobile {
+          width: 100%;
+          padding: 1.2rem;
+        }
+
+        &:hover {
+          border-color: $primary-dark;
+          color: $primary-dark;
+          transform: translateY(-2px);
+        }
+
+        &.active {
+          background-color: $primary-dark;
+          color: #fff;
+          border-color: $primary-dark;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: $primary-dark;
+            border-radius: 10px;
+
+            @include mobile {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Start Section Courses
+.courses-section {
+  padding: 5rem 0;
+  background-color: $bg-light;
+  .container {
+    .courses-group {
+      &__title {
+        font-size: 4.8rem;
+        color: $primary-dark;
+        font-weight: 500;
+        text-transform: capitalize;
+
+        @include tablet {
+          font-size: 3.5rem;
+        }
+
+        @include mobile {
+          font-size: 2.2rem;
+        }
+      }
+
+      .courses-cards {
+        display: flex;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @include mobile {
+          flex-direction: column;
+        }
+
+        .course-card {
+          display: flex;
+          flex-direction: column;
+          width: 24%;
+          position: relative;
+
+          @include tablet {
+            width: 48%;
+          }
+
+          @include mobile {
+            width: 100%;
+          }
+
+          &__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            border-radius: $radius-lg $radius-lg 0 0;
+          }
+
+          &__instructor-img {
+            border-radius: $radius-circle;
+            width: 5rem;
+            height: 5rem;
+            object-fit: cover;
+            position: absolute;
+            top: -25%;
+            left: 1rem;
+
+            @include tablet {
+              left: 50%;
+              top: -50%;
+              transform: translateX(-50%) translateY(15%);
+              width: 8rem;
+              height: 8rem;
+            }
+
+            @include mobile {
+              left: 50%;
+              top: -50%;
+              transform: translateX(-50%) translateY(35%);
+              width: 7rem;
+              height: 7rem;
+            }
+          }
+
+          &__info {
+            background-color: $bg-white;
+            padding: 1.5rem 1rem 1.2rem;
+            border-radius: $radius-lg $radius-lg 0 0;
+            transform: translateY(-10%);
+
+            .course-card__title {
+              font-size: 1.8rem;
+              color: $primary-dark;
+              text-transform: capitalize;
+            }
+
+            .course-meta {
+              @include flex-between;
+              margin-top: 1.5rem;
+
+              &__lessons,
+              &__students {
+                margin: 0 auto;
+                color: $text-light;
+                font-size: 1.6rem;
+              }
+
+              &__review {
+                display: flex;
+                gap: 4px;
+                align-items: center;
+                font-size: 1.8rem;
+                color: $text-light-yellow;
+
+                .star {
+                  width: 1.8rem;
+                  height: 1.8rem;
+
+                  &.filled {
+                    color: #ffc107;
+                  }
+
+                  &.empty {
+                    color: #ddd;
+                  }
+                }
+              }
+            }
+
+            .course-card__price {
+              color: #ff0000;
+              font-size: 1.8rem;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// End Section Courses

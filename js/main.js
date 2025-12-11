@@ -1,14 +1,15 @@
-const ul = document.querySelector('.nav-bar__links');
-const linksTags = document.querySelectorAll('.nav-bar__links li a');
-const hamburger = document.querySelector('.hamburger');
+import { generateCourses, initializeFilter } from './data.js';
 
-// hamburger.addEventListener('click', () => {
-//   linksTags.forEach((link) => {
-//     link.addEventListener('click', (e) => {
-//       // remove active from all
-//       linksTags.forEach((l) => l.classList.remove('active'));
-//       // add to clicked
-//       e.currentTarget.classList.add('active');
-//     });
-//   });
-// });
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-bar__links');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+// تشغيل الكورسات والفلترة
+document.addEventListener('DOMContentLoaded', () => {
+  generateCourses('all'); // عرض جميع الكورسات في البداية
+  initializeFilter(); // تفعيل الفلترة
+});
