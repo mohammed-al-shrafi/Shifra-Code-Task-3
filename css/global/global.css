@@ -434,6 +434,7 @@ header.head .container {
   font-size: 4.8rem;
   letter-spacing: 1.1px;
   text-align: center;
+  text-transform: capitalize;
   font-weight: 500;
   animation: slideInFromRight 0.8s ease-out;
 }

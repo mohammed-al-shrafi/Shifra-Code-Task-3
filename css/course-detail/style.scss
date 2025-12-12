@@ -7,7 +7,6 @@ header.head {
   border-radius: 0 0 $radius-xl $radius-xl;
 
   @include mobile {
-    background-image: none;
     height: fit-content;
     border-radius: 0;
     &::after {
@@ -193,6 +192,7 @@ header.head {
       color: $text-black;
       font-weight: 500;
       flex: 1;
+      animation: slideInFromLeft 0.8s ease;
 
       @include tablet {
         font-size: 2.8rem;
@@ -206,7 +206,10 @@ header.head {
       border-radius: $radius-lg;
       width: 10%;
       height: 10%;
+      aspect-ratio: 16 / 8;
       flex: 1;
+      animation: slideInFromRight 0.8s ease;
+
       @include mobile {
         width: 80%;
         height: auto;
@@ -222,9 +225,10 @@ header.head {
   .card {
     background-color: $bg-white;
     border-radius: $radius-lg;
-    padding: 5rem;
+    padding: 3rem;
     box-shadow: $shadow-md;
     margin-top: 5rem;
+    animation: fadeInUp 0.8s ease;
 
     @include mobile {
       padding: 2rem 0;
@@ -331,6 +335,7 @@ header.head {
     }
     > p {
       flex: 1;
+      animation: slideDown 0.8s ease;
     }
   }
   .about__info {
@@ -344,6 +349,7 @@ header.head {
     font-weight: 500;
     line-height: 1.6;
     flex: 1;
+    animation: fadeOutIn 0.8s ease;
 
     .about__price {
       display: flex;
@@ -477,6 +483,7 @@ header.head {
   }
 
   .curriculum__details {
+    animation: fadeInUp 0.8s ease;
     background-color: $bg-white;
     border-radius: $radius-lg;
     box-shadow: $shadow-md;
@@ -549,6 +556,13 @@ header.head {
         margin-bottom: 2rem;
         list-style-type: disc;
         margin-left: 4rem;
+        animation: slideInFromLeft 0.8s ease-out backwards;
+
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.2}s;
+          }
+        }
 
         @include tablet {
           font-size: 2.8rem;
@@ -590,7 +604,12 @@ header.head {
       padding: 2rem 2.5rem;
       flex: 1;
       min-width: 30%;
-      // margin-left: 1rem;
+      animation: slideInFromRight 0.8s ease-out backwards;
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.3}s;
+        }
+      }
 
       &:not(:last-child) {
         border-bottom: 1px solid $bg-light;

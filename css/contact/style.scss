@@ -1,0 +1,555 @@
+@import '../global/variables';
+
+header.head {
+  position: relative;
+  border-radius: 0 0 $radius-xl $radius-xl;
+
+  @include mobile {
+    height: fit-content;
+    border-radius: 0;
+    &::after {
+      background-color: transparent !important;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    border-radius: 0 0 $radius-xl $radius-xl;
+    height: 11rem;
+    background-color: $bg-white;
+  }
+
+  .nav-bar {
+    @include flex-between;
+    @include mobile {
+      justify-content: space-around;
+    }
+
+    .left {
+      @include flex-center;
+      gap: 2rem;
+
+      .logo img {
+        width: 6rem;
+
+        @include mobile {
+          width: 5rem;
+        }
+      }
+
+      .nav-bar__links {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+
+        li a {
+          color: #777676;
+          font-weight: bold;
+          font-size: 1.8rem;
+          padding: 0.6rem 1.2rem;
+          border-radius: $radius-sm;
+          transition: $transition-smooth;
+          @include mobile {
+            color: $text-white;
+          }
+          &:hover {
+            color: $primary-dark;
+          }
+
+          &.active {
+            color: $primary-dark;
+            animation: glow 2s infinite;
+          }
+        }
+      }
+    }
+
+    .right {
+      @include flex-center;
+      gap: 1rem;
+
+      span.name {
+        @include flex-center;
+        width: 5rem;
+        aspect-ratio: 1/1;
+        font-size: 1.8rem;
+        color: $text-white;
+        background-color: $text-light-yellow;
+        border-radius: $radius-circle;
+
+        @include mobile {
+          width: 4rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .hamburger {
+      display: none;
+      width: 3.2rem;
+      height: 2.4rem;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: $text-light;
+        border-radius: 3px;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:nth-child(3) {
+          bottom: 0;
+        }
+      }
+
+      &.active {
+        span:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        span:nth-child(3) {
+          bottom: 50%;
+          transform: translateY(50%) rotate(-45deg);
+        }
+      }
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    /* Mobile Menu */
+    @include tablet {
+      .nav-bar__links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: $primary-dark;
+        padding: 2rem 0;
+        gap: 2rem;
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+
+        li a {
+          color: $text-white;
+          font-size: 2rem;
+        }
+
+        &.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Contact Section Styles
+   =================================== */
+.section.contact {
+  padding: 6rem 0;
+  min-height: 100vh;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      circle,
+      rgba(102, 70, 248, 0.03) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out;
+    .header__title {
+      font-size: 3rem;
+      margin-top: 3rem;
+      color: $text-medium;
+    }
+    .header__desc {
+      font-size: 2rem;
+    }
+  }
+
+  .contact--body {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+
+    @include desktop {
+      gap: 3rem;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    // Form Section
+    .contact__form {
+      flex: 1;
+      background: $bg-white;
+      padding: 3rem;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-lg;
+      transition: $transition-smooth;
+      animation: slideInFromLeft 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+      }
+
+      &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-5px);
+      }
+
+      @include mobile {
+        width: 100%;
+        padding: 2rem;
+      }
+
+      .form {
+        .contact__form--modiferes {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          margin-bottom: 2rem;
+
+          label {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: $primary-dark;
+            transition: $transition-smooth;
+
+            @include mobile {
+              font-size: 1.4rem;
+            }
+          }
+
+          input,
+          textarea {
+            padding: 1.2rem 1.5rem;
+            font-size: 1.6rem;
+            border: 2px solid #e0e0e0;
+            border-radius: $radius-md;
+            transition: $transition-smooth;
+            font-family: inherit;
+            background: #FFD;
+
+            @include mobile {
+              padding: 1rem 1.2rem;
+              font-size: 1.4rem;
+            }
+
+            &:focus {
+              outline: none;
+              border-color: $primary-dark;
+              background: $bg-white;
+              box-shadow: 0 0 0 3px rgba(102, 70, 248, 0.1);
+              transform: translateY(-2px);
+            }
+
+            &::placeholder {
+              color: #999;
+            }
+          }
+
+          textarea {
+            resize: vertical;
+            min-height: 16rem;
+            max-height: 30rem;
+
+            @include mobile {
+              min-height: 12rem;
+            }
+          }
+
+          // Animation للـ labels
+          &:focus-within label {
+            color: $primary-dark;
+            transform: translateX(3px);
+          }
+        }
+
+        button.submit {
+          width: 100%;
+          padding: 1.5rem 3rem;
+          background: $btn-primary;
+          color: $text-white;
+          font-size: 1.8rem;
+          font-weight: 600;
+          border: none;
+          border-radius: $radius-md;
+          cursor: pointer;
+          transition: $transition-spring;
+          box-shadow: $shadow-primary;
+          position: relative;
+          overflow: hidden;
+          margin-top: 1rem;
+
+          @include mobile {
+            padding: 1.2rem 2rem;
+            font-size: 1.6rem;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: $radius-circle;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+          }
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: $shadow-primary-hover;
+
+            &::before {
+              width: 400px;
+              height: 400px;
+            }
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+
+          &:focus-visible {
+            outline: 3px solid rgba(102, 70, 248, 0.5);
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
+
+    // Socials Section
+    .contact__socials {
+      flex: 1;
+      animation: slideInFromRight 0.8s ease-out 0.2s backwards;
+
+      .contact__socials--title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: $primary-dark;
+        @include mobile {
+          font-size: 2.5rem;
+          text-align: center;
+        }
+      }
+
+      .contact__socials--description {
+        font-size: 1.8rem;
+        line-height: 1.8;
+        color: $text-medium;
+        margin-bottom: 3rem;
+        @include mobile {
+          text-align: center;
+          font-size: 1.6rem;
+        }
+      }
+
+      .contact__socials--media {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include mobile {
+          gap: 1.5rem;
+        }
+
+        li {
+          position: relative;
+          margin: 0 auto;
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: $bg-white;
+            border-radius: $radius-circle;
+            box-shadow: $shadow-md;
+            transition: $transition-spring;
+            position: relative;
+            overflow: hidden;
+
+            @include mobile {
+              width: 50px;
+              height: 50px;
+            }
+
+            // Different colors for each social
+            &.facebook {
+              &::before {
+                background: linear-gradient(135deg, #1877f2, #0c63d4);
+              }
+            }
+
+            &.instagram {
+              &::before {
+                background: linear-gradient(135deg, #f093fb, #f5576c, #feda75);
+              }
+            }
+
+            &.whatsapp {
+              &::before {
+                background: linear-gradient(135deg, #25d366, #128c7e);
+              }
+            }
+
+            &.telegram {
+              &::before {
+                background: linear-gradient(135deg, #0088cc, #005580);
+              }
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              transition: $transition-smooth;
+              z-index: 0;
+            }
+
+            &:hover {
+              transform: translateY(-5px) scale(1.1);
+              box-shadow: $shadow-xl;
+
+              &::before {
+                opacity: 1;
+              }
+
+              svg {
+                color: $text-white;
+                transform: scale(1.1) rotate(5deg);
+              }
+            }
+
+            svg {
+              width: 28px;
+              height: 28px;
+              color: $text-medium;
+              transition: $transition-spring;
+              position: relative;
+              z-index: 1;
+
+              @include mobile {
+                width: 24px;
+                height: 24px;
+              }
+            }
+          }
+        }
+      }
+
+      .contact__info {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .info-card {
+          background: $bg-white;
+          padding: 2rem;
+          border-radius: $radius-lg;
+          box-shadow: $shadow-sm;
+          transition: $transition-smooth;
+          @include flex-between;
+          gap: 1.5rem;
+
+          &:hover {
+            box-shadow: $shadow-md;
+            transform: translateX(5px);
+          }
+
+          .icon {
+            @include flex-center;
+            width: 50px;
+            height: 50px;
+            background-color: $bg-light;
+            border-radius: $radius-md;
+            color: $text-light;
+            flex-shrink: 0;
+
+            svg {
+              width: 24px;
+              height: 24px;
+            }
+          }
+
+          .info-content {
+            flex: 1;
+
+            h4 {
+              font-size: 1.6rem;
+              color: $text-black;
+              margin-bottom: 0.5rem;
+            }
+
+            p {
+              font-size: 1.4rem;
+              color: $text-light;
+            }
+          }
+        }
+      }
+    }
+  }
+}

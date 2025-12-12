@@ -106,11 +106,12 @@
 }
 header.head {
   height: 100vh;
-  background-image: url("../../assets/imgs/courses/background-course.jpg");
+  background-image: url("../../assets/imgs/Aboutus.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   border-radius: 0 0 2rem 2rem;
+  animation: slideDown 0.8s ease;
 }
 @media (max-width: 576px) {
   header.head {
@@ -130,7 +131,7 @@ header.head::after {
   width: 100%;
   z-index: -1;
   border-radius: 0 0 2rem 2rem;
-  height: 10rem;
+  height: 11rem;
   background-color: #ffffff;
 }
 header.head .nav-bar {
@@ -347,6 +348,7 @@ section.about .container > p {
   margin-top: 3rem;
   letter-spacing: 0.05rem;
   line-height: 2;
+  animation: slideInFromLeft 0.8s ease;
 }
 @media (max-width: 576px) {
   section.about .container > p {
@@ -367,6 +369,7 @@ section.about .container .cards .card {
   background-color: #ffffff;
   padding: 1.8rem 1.2rem;
   width: 45%;
+  animation: slideInFromDown 0.8s ease;
 }
 @media (max-width: 768px) {
   section.about .container .cards .card {
@@ -422,6 +425,12 @@ section.about .container .cards .card .card__desc {
   padding: 1rem 1.2rem 1.4rem;
   border-radius: 1rem;
   position: relative;
+}
+.team .teams .instructor:nth-child(odd) {
+  animation: slideInFromDown 0.8s ease;
+}
+.team .teams .instructor:nth-child(even) {
+  animation: slideInFromUp 0.8s ease;
 }
 @media (max-width: 768px) {
   .team .teams .instructor {
@@ -484,6 +493,12 @@ section.about .container .cards .card .card__desc {
   justify-content: center;
   align-items: center;
   padding: 2rem 1rem;
+}
+.team .statics .static:nth-child(odd) {
+  animation: slideInFromUp 0.8s ease;
+}
+.team .statics .static:nth-child(even) {
+  animation: slideInFromDown 0.8s ease;
 }
 @media (max-width: 768px) {
   .team .statics .static {

@@ -77,55 +77,6 @@ header.head {
       @include flex-center;
       gap: 1rem;
 
-      .notification-icon {
-        position: relative;
-        cursor: pointer;
-        width: 4rem;
-        height: 4rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: $radius-circle;
-        background: rgba(119, 118, 118, 0.1);
-        transition: $transition-smooth;
-
-        &:hover {
-          background: rgba(119, 118, 118, 0.2);
-        }
-
-        svg {
-          width: 2rem;
-          height: 2rem;
-          color: $text-light;
-        }
-
-        .notification-badge {
-          position: absolute;
-          top: 4px;
-          right: 4px;
-          background: #ff0000;
-          color: white;
-          border-radius: $radius-circle;
-          width: 1.6rem;
-          height: 1.6rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1rem;
-          font-weight: bold;
-        }
-
-        @include mobile {
-          width: 3.5rem;
-          height: 3.5rem;
-
-          svg {
-            width: 1.8rem;
-            height: 1.8rem;
-          }
-        }
-      }
-
       span.name {
         @include flex-center;
         width: 5rem;
@@ -138,18 +89,6 @@ header.head {
         @include mobile {
           width: 4rem;
           font-size: 1.6rem;
-        }
-      }
-
-      img.user-img {
-        display: none;
-        width: 5rem;
-        height: 5rem;
-        border-radius: $radius-circle;
-        object-fit: cover;
-
-        @include mobile {
-          display: block;
         }
       }
     }
@@ -246,6 +185,7 @@ header.head {
     font-weight: 500;
     color: $primary-dark;
     position: relative;
+    animation: slideInFromLeft 0.8s ease;
 
     &::after {
       content: '';
@@ -256,6 +196,7 @@ header.head {
       background-color: #3f44e3;
       right: 0;
       bottom: -10%;
+      animation: slideInFromRight 1.5s ease;
     }
 
     @include tablet {
@@ -279,6 +220,7 @@ header.head {
     font-size: 1.6rem;
     @include flex-center;
     gap: 1.8rem;
+    animation: slideInFromDown 0.8s ease;
 
     @include mobile {
       padding: 1.5rem 2rem;
@@ -286,6 +228,7 @@ header.head {
     }
   }
 }
+
 .filter-section {
   padding: 3rem 0;
   background-color: $bg-light;
@@ -314,6 +257,14 @@ header.head {
         transition: all 0.3s ease;
         text-transform: capitalize;
         position: relative;
+
+        &:nth-child(odd) {
+          animation: fadeInUp 0.8s ease;
+        }
+
+        &:nth-child(even) {
+          animation: fadeOutIn 0.8s ease;
+        }
 
         @include mobile {
           width: 100%;
@@ -363,6 +314,7 @@ header.head {
         color: $primary-dark;
         font-weight: 500;
         text-transform: capitalize;
+        animation: fadeInUp 0.8s ease;
 
         @include tablet {
           font-size: 3.5rem;
@@ -379,6 +331,8 @@ header.head {
         flex-wrap: wrap;
         gap: 1rem;
 
+        animation: slideInFromLeft 0.8s ease;
+
         @include mobile {
           flex-direction: column;
         }
@@ -388,6 +342,7 @@ header.head {
           flex-direction: column;
           width: 24%;
           position: relative;
+          cursor: pointer;
 
           @include tablet {
             width: 48%;

@@ -189,51 +189,6 @@ header.head .nav-bar .right {
   align-items: center;
   gap: 1rem;
 }
-header.head .nav-bar .right .notification-icon {
-  position: relative;
-  cursor: pointer;
-  width: 4rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(119, 118, 118, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-header.head .nav-bar .right .notification-icon:hover {
-  background: rgba(119, 118, 118, 0.2);
-}
-header.head .nav-bar .right .notification-icon svg {
-  width: 2rem;
-  height: 2rem;
-  color: #515151;
-}
-header.head .nav-bar .right .notification-icon .notification-badge {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background: #ff0000;
-  color: white;
-  border-radius: 50%;
-  width: 1.6rem;
-  height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: bold;
-}
-@media (max-width: 576px) {
-  header.head .nav-bar .right .notification-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-  header.head .nav-bar .right .notification-icon svg {
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-}
 header.head .nav-bar .right span.name {
   display: flex;
   justify-content: center;
@@ -249,19 +204,6 @@ header.head .nav-bar .right span.name {
   header.head .nav-bar .right span.name {
     width: 4rem;
     font-size: 1.6rem;
-  }
-}
-header.head .nav-bar .right img.user-img {
-  display: none;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media (max-width: 576px) {
-  header.head .nav-bar .right img.user-img {
-    display: block;
   }
 }
 header.head .nav-bar .hamburger {
@@ -345,6 +287,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   font-weight: 500;
   color: #001b4a;
   position: relative;
+  animation: slideInFromLeft 0.8s ease;
 }
 .intro .intro__title::after {
   content: "";
@@ -355,6 +298,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   background-color: #3f44e3;
   right: 0;
   bottom: -10%;
+  animation: slideInFromRight 1.5s ease;
 }
 @media (max-width: 768px) {
   .intro .intro__title {
@@ -380,6 +324,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   justify-content: center;
   align-items: center;
   gap: 1.8rem;
+  animation: slideInFromDown 0.8s ease;
 }
 @media (max-width: 576px) {
   .intro .btn__search {
@@ -417,6 +362,12 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   transition: all 0.3s ease;
   text-transform: capitalize;
   position: relative;
+}
+.filter-section .container .filter-buttons .filter-btn:nth-child(odd) {
+  animation: fadeInUp 0.8s ease;
+}
+.filter-section .container .filter-buttons .filter-btn:nth-child(even) {
+  animation: fadeOutIn 0.8s ease;
 }
 @media (max-width: 576px) {
   .filter-section .container .filter-buttons .filter-btn {
@@ -460,6 +411,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   color: #001b4a;
   font-weight: 500;
   text-transform: capitalize;
+  animation: fadeInUp 0.8s ease;
 }
 @media (max-width: 768px) {
   .courses-section .container .courses-group__title {
@@ -476,6 +428,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   margin-top: 4rem;
   flex-wrap: wrap;
   gap: 1rem;
+  animation: slideInFromLeft 0.8s ease;
 }
 @media (max-width: 576px) {
   .courses-section .container .courses-group .courses-cards {
@@ -487,6 +440,7 @@ header.head .nav-bar .hamburger.active span:nth-child(3) {
   flex-direction: column;
   width: 24%;
   position: relative;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   .courses-section .container .courses-group .courses-cards .course-card {

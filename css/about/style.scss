@@ -2,11 +2,12 @@
 
 header.head {
   height: 100vh;
-  background-image: url('../../assets/imgs/courses/background-course.jpg');
+  background-image: url('../../assets/imgs/Aboutus.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   border-radius: 0 0 $radius-xl $radius-xl;
+  animation: slideDown 0.8s ease;
 
   @include mobile {
     background-image: none;
@@ -24,7 +25,7 @@ header.head {
     width: 100%;
     z-index: -1;
     border-radius: 0 0 $radius-xl $radius-xl;
-    height: 10rem;
+    height: 11rem;
     background-color: $bg-white;
   }
 
@@ -249,6 +250,8 @@ section.about {
       margin-top: 3rem;
       letter-spacing: 0.05rem;
       line-height: 2;
+      animation: slideInFromLeft 0.8s ease;
+
       @include mobile {
         font-size: 1.4rem;
       }
@@ -265,6 +268,8 @@ section.about {
         background-color: $bg-white;
         padding: 1.8rem 1.2rem;
         width: 45%;
+        animation: slideInFromDown 0.8s ease;
+
         @include tablet {
           width: 48%;
         }
@@ -303,6 +308,7 @@ section.about {
 // Start Section Team
 .team {
   background-color: $bg-light;
+
   .teams {
     display: flex;
     gap: 2rem;
@@ -315,6 +321,13 @@ section.about {
       padding: 1rem 1.2rem 1.4rem;
       border-radius: $radius-md;
       position: relative;
+      &:nth-child(odd) {
+        animation: slideInFromDown 0.8s ease;
+      }
+      &:nth-child(even) {
+        animation: slideInFromUp 0.8s ease;
+      }
+
       @include tablet {
         width: 48%;
         margin-top: 2rem;
@@ -371,6 +384,14 @@ section.about {
       justify-content: center;
       align-items: center;
       padding: 2rem 1rem;
+
+      &:nth-child(odd) {
+        animation: slideInFromUp 0.8s ease;
+      }
+
+      &:nth-child(even) {
+        animation: slideInFromDown 0.8s ease;
+      }
 
       @include tablet {
         width: 48%;
